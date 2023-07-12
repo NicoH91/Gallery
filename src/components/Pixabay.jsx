@@ -41,8 +41,9 @@ export const Pixabay = ({ url, imageKey, imageTag }) => {
       <Card className="card">
         <CardImage src={url} className="card-img-top" alt="" />
         <CardBody className="card-body">
-          <CardTitle className="card-title"></CardTitle>
+          <CardTitle className="{card-title}"></CardTitle>
           <CardText className="card-text">{imageTag}</CardText>
+          
           <a href="#" className="btn btn-success">
             
           <i className="bi bi-info"></i>
