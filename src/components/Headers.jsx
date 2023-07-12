@@ -8,6 +8,7 @@ color: transparent;
 background-clip: text;
 -webkit-background-clip: text;
 text-align:center;
+margin-bottom:2rem;
 `
 
 export const Headers = () => {

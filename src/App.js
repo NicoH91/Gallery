@@ -72,6 +72,7 @@ import './App.css';
 import { Headers } from "./components/Headers";
 import { Loader } from "./components/Loader";
 import { Pixabay } from "./components/Pixabay";
+import { Input } from "./components/Input"
 
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -115,7 +116,9 @@ function App() {
     <>
       <div className="App">
         <Headers />
+        
         <div className='container'>
+        <Input />
           <InfiniteScroll
             dataLength={images.length}
             next={fetchImages}
@@ -124,7 +127,7 @@ function App() {
           >
             <div className='row'>
               {images.map(image => (
-                <div className='col-lg-3' key={image.id}>
+                <div className='col-lg-3 col-12 .col-sm-6' key={image.id}>
                   <Pixabay url={image.largeImageURL} imageKey={image.id} imageTag={image.tags} />
                 </div>
               ))}
