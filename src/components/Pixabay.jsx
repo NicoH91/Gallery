@@ -1,5 +1,16 @@
 import React, { useState, useRef } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const scaleIn = keyframes`
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
 
 const Card = styled.div`
   width: 18rem;
@@ -10,6 +21,11 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
 `;
 
 const CardImage = styled.img`
@@ -44,6 +60,8 @@ const ModalContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 9999;
+
+  animation: ${scaleIn} 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) both;
 `;
 
 const ModalContent = styled.div`
