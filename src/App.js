@@ -30,7 +30,7 @@ function App() {
   const fetchImages = () => {
     const apiRoot = "https://pixabay.com/api/";
     const apiKey = "38085818-b31ba57d682bb58cb5016481e";
-    const count = 10;
+    const count = 5;
 
     const url = `${apiRoot}?key=${apiKey}&image_type=photo&per_page=${count}&page=${page}&q=${searchQuery}`;
 
