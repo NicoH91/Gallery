@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-
 
 const Card = styled.div`
   width: 18rem;
@@ -59,14 +58,13 @@ const ModalContent = styled.div`
   align-items: center;
 `;
 
-
 const ModalImage = styled.img`
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  border: 0; 
+  border: 0;
   display: block;
 `;
 
@@ -82,6 +80,7 @@ const CloseButton = styled.button`
 
 export const Pixabay = ({ url, imageKey, imageTag }) => {
   const [showModal, setShowModal] = useState(false);
+  const modalRef = useRef();
 
   const handleImageClick = () => {
     setShowModal(true);
@@ -89,6 +88,12 @@ export const Pixabay = ({ url, imageKey, imageTag }) => {
 
   const handleCloseModal = () => {
     setShowModal(false);
+  };
+
+  const handleModalClick = (event) => {
+    if (event.target === modalRef.current) {
+      setShowModal(false);
+    }
   };
 
   return (
@@ -105,7 +110,7 @@ export const Pixabay = ({ url, imageKey, imageTag }) => {
       </Card>
 
       {showModal && (
-        <ModalContainer>
+        <ModalContainer ref={modalRef} onClick={handleModalClick}>
           <ModalContent>
             <CloseButton onClick={handleCloseModal}>&times;</CloseButton>
             <ModalImage src={url} alt="" className="large-image" />
