@@ -29,7 +29,7 @@ function App() {
   const fetchImages = () => {
     const apiRoot = "https://pixabay.com/api/";
     const apiKey = "38085818-b31ba57d682bb58cb5016481e";
-    const count = 5;
+    const count = 3;
 
     const url = `${apiRoot}?key=${apiKey}&image_type=photo&per_page=${count}&page=${page}&q=${searchQuery}`;
 
@@ -37,7 +37,7 @@ function App() {
     axios
       .get(url)
       .then(res => {
-        console.log(res.data.hits);
+        // console.log(res.data.hits);
         if (res.data.hits.length > 0) {
           const imagesWithInfo = res.data.hits.map(image => ({
             id: image.id,
@@ -77,8 +77,8 @@ function App() {
             loader={<div style={{ textAlign: 'center' }}>{isLoading && <Loader />}</div>}
           >
             <div className='row'>
-              {images.map(image => (
-                <div className='col-lg-3 col-12 .col-sm-6' key={image.id}>
+              {images.map((image, index) => (
+                <div className='col-lg-3 col-12 .col-sm-6' key={`${image.id}-${index}`}>
                   <Pixabay
                     url={image.largeImageURL}
                     imageKey={image.id}

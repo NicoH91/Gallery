@@ -96,9 +96,18 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export const Pixabay = ({ url, imageKey, imageTag, views, downloads, likes, user }) => {
+export const Pixabay = ({ url, imageTag, views, downloads, likes, user }) => {
   const [showModal, setShowModal] = useState(false);
   const modalRef = useRef();
+
+  const nombresCamaras = [
+    "Canon EOS R5",
+    "Nikon Z9",
+    "Sony A1",
+    "Fujifilm GFX 100S",
+    "Leica SL2-S"
+  ];
+  const nombreCamaraAleatoria = nombresCamaras[Math.floor(Math.random() * nombresCamaras.length)];
 
   const handleImageClick = () => {
     setShowModal(true);
@@ -119,18 +128,17 @@ export const Pixabay = ({ url, imageKey, imageTag, views, downloads, likes, user
       <Card className="card" onClick={handleImageClick}>
         <CardImage src={url} className="card-img-top" alt="" />
         <CardBody className="card-body">
-          <CardTitle className="{card-title}"></CardTitle>
+          
           <CardText className="card-text">{imageTag}</CardText>
 
           {/* Mostrar información adicional */}
           <div className="card-info">
-            <p><i class="bi bi-eye"></i> : {views}</p>
-            <p><i class="bi bi-arrow-down"></i> : {downloads}</p>
-            <p><i class="bi bi-hand-thumbs-up-fill"></i> : {likes}</p>
-            <p><i class="bi bi-person-check-fill"></i> : {user}</p>
+            <p><i className="bi bi-eye"></i> : {views}</p>
+            <p><i className="bi bi-arrow-down"></i> : {downloads}</p>
+            <p><i className="bi bi-hand-thumbs-up-fill"></i> : {likes}</p>
+            <p><i className="bi bi-person-check-fill"></i> : {user}</p>
+            <p><i className="bi bi-camera"></i> : {nombreCamaraAleatoria}</p>
           </div>
-
-          
         </CardBody>
       </Card>
 
@@ -145,6 +153,3 @@ export const Pixabay = ({ url, imageKey, imageTag, views, downloads, likes, user
     </>
   );
 };
-
-
- 
