@@ -1,4 +1,3 @@
-// Componente principal App
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Headers } from "./components/Headers";
@@ -40,7 +39,17 @@ function App() {
       .then(res => {
         console.log(res.data.hits);
         if (res.data.hits.length > 0) {
-          setImages(prevImages => [...prevImages, ...res.data.hits]);
+          const imagesWithInfo = res.data.hits.map(image => ({
+            id: image.id,
+            largeImageURL: image.largeImageURL,
+            tags: image.tags,
+            views: image.views,
+            downloads: image.downloads,
+            likes: image.likes,
+            user: image.user
+          }));
+
+          setImages(prevImages => [...prevImages, ...imagesWithInfo]);
           setPage(prevPage => prevPage + 1);
         } else {
           setHasMore(false);
@@ -70,7 +79,15 @@ function App() {
             <div className='row'>
               {images.map(image => (
                 <div className='col-lg-3 col-12 .col-sm-6' key={image.id}>
-                  <Pixabay url={image.largeImageURL} imageKey={image.id} imageTag={image.tags} />
+                  <Pixabay
+                    url={image.largeImageURL}
+                    imageKey={image.id}
+                    imageTag={image.tags}
+                    views={image.views}
+                    downloads={image.downloads}
+                    likes={image.likes}
+                    user={image.user}
+                  />
                 </div>
               ))}
             </div>

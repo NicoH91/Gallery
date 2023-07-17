@@ -13,8 +13,8 @@ const scaleIn = keyframes`
 `;
 
 const Card = styled.div`
-  width: 18rem;
-  height: 23rem;
+  width: 18rem; /* Ajusta el ancho según tus necesidades */
+  height: 30rem; /* Ajusta la altura según tus necesidades */
   padding: 1rem;
   margin: 1rem;
   cursor: pointer;
@@ -96,7 +96,7 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export const Pixabay = ({ url, imageKey, imageTag }) => {
+export const Pixabay = ({ url, imageKey, imageTag, views, downloads, likes, user }) => {
   const [showModal, setShowModal] = useState(false);
   const modalRef = useRef();
 
@@ -121,9 +121,16 @@ export const Pixabay = ({ url, imageKey, imageTag }) => {
         <CardBody className="card-body">
           <CardTitle className="{card-title}"></CardTitle>
           <CardText className="card-text">{imageTag}</CardText>
-          <a href="#" className="btn btn-success">
-            <i className="bi bi-info"></i>
-          </a>
+
+          {/* Mostrar información adicional */}
+          <div className="card-info">
+            <p><i class="bi bi-eye"></i> : {views}</p>
+            <p><i class="bi bi-arrow-down"></i> : {downloads}</p>
+            <p><i class="bi bi-hand-thumbs-up-fill"></i> : {likes}</p>
+            <p><i class="bi bi-person-check-fill"></i> : {user}</p>
+          </div>
+
+          
         </CardBody>
       </Card>
 
@@ -139,22 +146,5 @@ export const Pixabay = ({ url, imageKey, imageTag }) => {
   );
 };
 
-  
-  // export const Pixabay = ({ url, imageKey, imageTag }) => {
-//     return (
 
-//         <div className='contenedor'>
-//             <img className='img' src={url} key={imageKey} alt="" />
-//             <p>{imageTag} </p>
-//         </div>
-
-
-//     );
-    
-// };
-
-// const Img = styled.img`
-//   width: 100%;
-//   height: 100%;
-//   object-fit: cover;
-// `;
+ 
