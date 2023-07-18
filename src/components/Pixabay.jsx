@@ -12,9 +12,14 @@ const scaleIn = keyframes`
   }
 `;
 
+const Container = styled.div`
+  max-width: 100%;
+  overflow: hidden;
+`;
+
 const Card = styled.div`
   width: 18rem; /* Ajusta el ancho según tus necesidades */
-  height: 30rem; /* Ajusta la altura según tus necesidades */
+  height: 31rem; /* Ajusta la altura según tus necesidades */
   padding: 1rem;
   margin: 1rem;
   cursor: pointer;
@@ -25,6 +30,14 @@ const Card = styled.div`
   &:hover {
     opacity: 0.8;
     transition: opacity 0.3s ease;
+  }
+
+  @media (max-width: 576px) {
+    margin: 1rem auto;
+  }
+
+  @media (min-width: 576px) and (max-width: 768px) {
+    width: 15rem;
   }
 `;
 
@@ -125,22 +138,24 @@ export const Pixabay = ({ url, imageTag, views, downloads, likes, user }) => {
 
   return (
     <>
-      <Card className="card" onClick={handleImageClick}>
-        <CardImage src={url} className="card-img-top" alt="" />
-        <CardBody className="card-body">
-          
-          <CardText className="card-text">{imageTag}</CardText>
+      <Container>
+        <Card className="card" onClick={handleImageClick}>
+          <CardImage src={url} className="card-img-top" alt="" />
+          <CardBody className="card-body">
+         
+            <CardText className="card-text">{imageTag}</CardText>
 
-          {/* Mostrar información adicional */}
-          <div className="card-info">
-            <p><i className="bi bi-eye"></i> : {views}</p>
-            <p><i className="bi bi-arrow-down"></i> : {downloads}</p>
-            <p><i className="bi bi-hand-thumbs-up-fill"></i> : {likes}</p>
-            <p><i className="bi bi-person-check-fill"></i> : {user}</p>
-            <p><i className="bi bi-camera"></i> : {nombreCamaraAleatoria}</p>
-          </div>
-        </CardBody>
-      </Card>
+            {/* Mostrar información adicional */}
+            <div className="card-info">
+              <p><i className="bi bi-eye"></i> : {views}</p>
+              <p><i className="bi bi-arrow-down"></i> : {downloads}</p>
+              <p><i className="bi bi-hand-thumbs-up-fill"></i> : {likes}</p>
+              <p><i className="bi bi-person-check-fill"></i> : {user}</p>
+              <p><i className="bi bi-camera"></i> : {nombreCamaraAleatoria}</p>
+            </div>
+          </CardBody>
+        </Card>
+      </Container>
 
       {showModal && (
         <ModalContainer ref={modalRef} onClick={handleModalClick}>

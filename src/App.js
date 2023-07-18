@@ -31,13 +31,19 @@ function App() {
     const apiKey = "38085818-b31ba57d682bb58cb5016481e";
     const count = 3;
 
-    const url = `${apiRoot}?key=${apiKey}&image_type=photo&per_page=${count}&page=${page}&q=${searchQuery}`;
+    let url = `${apiRoot}?key=${apiKey}&image_type=photo&per_page=${count}&page=${page}`;
+
+    if (searchQuery) {
+      url += `&q=${searchQuery}`;
+    } else {
+      // Generar consulta aleatoria si no hay texto de búsqueda
+      url += `&order=popular&min_width=200&min_height=200`;
+    }
 
     setIsLoading(true);
     axios
       .get(url)
       .then(res => {
-        // console.log(res.data.hits);
         if (res.data.hits.length > 0) {
           const imagesWithInfo = res.data.hits.map(image => ({
             id: image.id,
@@ -78,7 +84,7 @@ function App() {
           >
             <div className='row'>
               {images.map((image, index) => (
-                <div className='col-lg-3 col-12 .col-sm-6' key={`${image.id}-${index}`}>
+                <div className='col-lg-3 col-12 col-sm-6' key={`${image.id}-${index}`}>
                   <Pixabay
                     url={image.largeImageURL}
                     imageKey={image.id}
