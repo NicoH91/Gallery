@@ -18,8 +18,8 @@ const Container = styled.div`
 `;
 
 const Card = styled.div`
-  width: 18rem; /* Ajusta el ancho según tus necesidades */
-  height: 31rem; /* Ajusta la altura según tus necesidades */
+  width: 18rem; 
+  height: 31rem; 
   padding: 1rem;
   margin: 1rem;
   cursor: pointer;
@@ -145,7 +145,7 @@ export const Pixabay = ({ url, imageTag, views, downloads, likes, user }) => {
          
             <CardText className="card-text">{imageTag}</CardText>
 
-            {/* Mostrar información adicional */}
+           
             <div className="card-info">
               <p><i className="bi bi-eye"></i> : {views}</p>
               <p><i className="bi bi-arrow-down"></i> : {downloads}</p>
