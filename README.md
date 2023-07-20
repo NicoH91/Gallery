@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+Proyecto final de la carrera de Front end UTN, fue creado con React y se utilizo la Api de Pixaba.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Requisitos para la aprobación:
 
-In the project directory, you can run:
+La aplicación debe estar subida a github con sus respectivos commits y su readme completo generado y tipiado por el alumno.
 
-### `npm start`
+El proyecto debe estar DEPLOYADO en github.(el alumno debe investigar el modo de hacer el deploy del proyecto en react)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+la tipografía, colores quedan a elección del alumno.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+En el input se debe agregar una palabra especifica y nos muestre las fotos relacionadas con esa búsqueda.
 
-### `npm test`
+Al ingresar a la aplicación , las imágenes que se mostraran deben ser aleatorias.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Debe tener scroll infinito, lo cual significa que cuando se baje se deben cargar mas imágenes.
 
-### `npm run build`
+La aplicación debe ser totalmente responsive.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+las imágenes finales a visualizar queda a criterio del alumno (tamaños, efectos,imagen con bordes, imágenes en círculos,etc)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Debajo de cada imagen se debe visualizar: ubicación de  la fotografía, cámara que se utilizo y ademas etiquetas
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Las etiquetas dependen de la imagen, estas etiquetas se deben diferenciar con algun estilo (texto en color rojo, formato de piltora, formato de cuadrado)
 
-### `npm run eject`
+Los efectos del hover y o efectos de animaciones son necesarios y quedan a cargo del alumno dar estos efectos (NO SON OPCIONALES).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Se puede utilizar framework estos son obligatorios y quedan a cargo del alumno

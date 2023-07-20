@@ -8,15 +8,19 @@ import { Input } from "./components/Input"
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+
+const cameras = ["Canon", "Nikon", "Sony", "Fujifilm", "Panasonic", "Olympus", "Leica", "Pentax"];
+
 function App() {
   const [images, setImages] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  
+  const [initialRandomImages, setInitialRandomImages] = useState([]);
+
   useEffect(() => {
-    fetchImages();
+    fetchRandomImages();
   }, []);
 
   useEffect(() => {
@@ -29,14 +33,13 @@ function App() {
   const fetchImages = () => {
     const apiRoot = "https://pixabay.com/api/";
     const apiKey = "38085818-b31ba57d682bb58cb5016481e";
-    const count = 3;
+    const count = 10;
 
     let url = `${apiRoot}?key=${apiKey}&image_type=photo&per_page=${count}&page=${page}`;
 
     if (searchQuery) {
       url += `&q=${searchQuery}`;
     } else {
-      // Generar consulta aleatoria si no hay texto de búsqueda
       url += `&order=popular&min_width=200&min_height=200`;
     }
 
@@ -52,7 +55,8 @@ function App() {
             views: image.views,
             downloads: image.downloads,
             likes: image.likes,
-            user: image.user
+            user: image.user,
+            camera: image.camera || cameras[Math.floor(Math.random() * cameras.length)],
           }));
 
           setImages(prevImages => [...prevImages, ...imagesWithInfo]);
@@ -63,6 +67,34 @@ function App() {
       })
       .catch(error => console.error(error))
       .finally(() => setIsLoading(false));
+  };
+
+  const fetchRandomImages = () => {
+    const count = 10;
+    const randomImages = generateRandomImages(count);
+    setInitialRandomImages(randomImages);
+    setImages(randomImages);
+  };
+
+  const generateRandomImages = (count) => {
+    const randomImages = [];
+
+    for (let i = 0; i < count; i++) {
+      const image = {
+        id: `random-${i}`,
+        largeImageURL: `https://picsum.photos/200/300?random=${i}`,
+        tags: "Random Image",
+        views: 0,
+        downloads: 0,
+        likes: 0,
+        user: "Unknown",
+        camera: cameras[Math.floor(Math.random() * cameras.length)],
+      };
+
+      randomImages.push(image);
+    }
+
+    return randomImages;
   };
 
   const handleSearch = (query) => {
@@ -93,6 +125,7 @@ function App() {
                     downloads={image.downloads}
                     likes={image.likes}
                     user={image.user}
+                    camera={image.camera}
                   />
                 </div>
               ))}
